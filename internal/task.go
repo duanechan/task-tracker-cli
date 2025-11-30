@@ -1,6 +1,9 @@
 package task
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Status int
 
@@ -18,15 +21,11 @@ type Task struct {
 	UpdatedAt   time.Time `json:"updatedAt"`
 }
 
-func NewTask(state *state, description string) *Task {
-	state.Count++
-	t := &Task{
-		ID:          state.Count,
-		Description: description,
-		Status:      Todo,
-		CreatedAt:   time.Now(),
-		UpdatedAt:   time.Now(),
-	}
-	state.Tasks = append(state.Tasks, *t)
-	return t
+func (t Task) Details() {
+	fmt.Println("Task ID:", t.ID)
+	fmt.Println("--------------------")
+	fmt.Println(t.Description)
+	fmt.Println("created on:", t.CreatedAt)
+	fmt.Println("last updated:", t.UpdatedAt)
+	fmt.Println()
 }
