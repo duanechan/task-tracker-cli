@@ -1,5 +1,5 @@
 package task
 
-func commandList(state *State, args []string) error {
+func commandList(state *state, args []string) error {
 	return nil
 }

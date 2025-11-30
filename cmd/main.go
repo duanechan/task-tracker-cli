@@ -8,18 +8,18 @@ import (
 )
 
 func main() {
-	state, err := task.LoadState()
+	cli, err := task.LoadCLI()
 	if err != nil {
 		fmt.Println("Error:", err)
 		os.Exit(1)
 	}
 
 	if len(os.Args) < 2 {
-		state.DisplayCommands()
+		cli.DisplayCommands()
 		os.Exit(1)
 	}
 
-	if err = state.Run(os.Args[1:]); err != nil {
+	if err = cli.Run(os.Args[1:]); err != nil {
 		fmt.Println("Error:", err)
 		os.Exit(1)
 	}
