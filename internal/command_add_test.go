@@ -37,8 +37,8 @@ func TestCommandAdd(t *testing.T) {
 		})
 	}
 
-	if testState.Count != len(testArgs) {
-		t.Errorf("expected count to be %d, got %d", len(testArgs), testState.Count)
+	if testState.NextID != len(testArgs) {
+		t.Errorf("expected count to be %d, got %d", len(testArgs), testState.NextID)
 	}
 
 }

@@ -1,16 +1,9 @@
 package task
 
 import (
-	"errors"
 	"fmt"
 	"strings"
 	"time"
-)
-
-var (
-	ErrEmptyDescription = errors.New("task description is required")
-	ErrTooManyArgs      = errors.New("too many arguments")
-	ErrMissingArg       = errors.New("missing one argument")
 )
 
 func commandAdd(state *state, args []string) error {
@@ -27,9 +20,9 @@ func commandAdd(state *state, args []string) error {
 		return ErrEmptyDescription
 	}
 
-	state.Count++
+	state.NextID++
 	task := Task{
-		ID:          state.Count,
+		ID:          state.NextID,
 		Description: description,
 		Status:      Todo,
 		CreatedAt:   time.Now(),
@@ -37,7 +30,7 @@ func commandAdd(state *state, args []string) error {
 	}
 	state.Tasks = append(state.Tasks, task)
 
-	fmt.Printf("Task added successfully (ID: %d)\n", state.Count)
+	fmt.Printf("Task added successfully (ID: %d)\n", state.NextID)
 
 	return saveState(state)
 }

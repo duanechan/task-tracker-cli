@@ -8,8 +8,8 @@ import (
 
 // State object of the Task Tracker CLI.
 type state struct {
-	Count int    `json:"count"`
-	Tasks []Task `json:"tasks"`
+	NextID int    `json:"next_id"`
+	Tasks  []Task `json:"tasks"`
 }
 
 var (
@@ -17,11 +17,12 @@ var (
 	filename = "/.tasktracker.json"
 )
 
+// Reads the saved state from JSON file.
 func readState() (*state, error) {
 	path := filepath.Join(cwd, filename)
 
 	if _, err := os.Stat(path); os.IsNotExist(err) {
-		if err := saveState(&state{Count: 0, Tasks: []Task{}}); err != nil {
+		if err := saveState(&state{NextID: 0, Tasks: []Task{}}); err != nil {
 			return nil, err
 		}
 	}
@@ -40,6 +41,7 @@ func readState() (*state, error) {
 	return &state, nil
 }
 
+// Writes the given application state to the JSON file.
 func saveState(state *state) error {
 	path := filepath.Join(cwd, filename)
 
@@ -50,6 +52,12 @@ func saveState(state *state) error {
 	defer file.Close()
 
 	return json.NewEncoder(file).Encode(state)
+}
+
+// Truncates the JSON file to an empty state.
+func resetState() {
+	new := &state{NextID: 0, Tasks: []Task{}}
+	saveState(new)
 }
 
 // Load application state or return an error.
