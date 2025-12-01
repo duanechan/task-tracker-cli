@@ -27,7 +27,6 @@ var (
     ErrMissingArg       = errors.New("not enough arguments")
 )
 
-
 // Load application state or return an error.
 func LoadCLI() (*CLI, error) {
 	s, err := readState()
