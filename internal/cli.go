@@ -20,11 +20,11 @@ type CLI struct {
 }
 
 var (
-    ErrTaskNotFound = errors.New("task not found")
-    ErrInvalidArg       = errors.New("invalid argument")
-    ErrEmptyArgs        = errors.New("argument must be non-empty")
-    ErrTooManyArgs      = errors.New("too many arguments")
-    ErrMissingArg       = errors.New("not enough arguments")
+	ErrTaskNotFound = errors.New("task not found")
+	ErrInvalidArg   = errors.New("invalid argument")
+	ErrEmptyArgs    = errors.New("argument must be non-empty")
+	ErrTooManyArgs  = errors.New("too many arguments")
+	ErrMissingArg   = errors.New("not enough arguments")
 )
 
 // Load application state or return an error.
@@ -62,16 +62,16 @@ func LoadCLI() (*CLI, error) {
 				callback:    commandList,
 			},
 			"mark-in-progress": {
-				name: "mark-in-progress",
+				name:        "mark-in-progress",
 				description: "Marks the task status of a given ID as 'in-progress'.",
-				usage: "mark-as-in-progress <id>",
-				callback: commandMarkInProgress,
+				usage:       "mark-as-in-progress <id>",
+				callback:    commandMarkInProgress,
 			},
 			"mark-done": {
-				name: "mark-done",
+				name:        "mark-done",
 				description: "Marks the task status of a given ID as 'done'.",
-				usage: "mark-done <id>",
-				callback: commandMarkDone,
+				usage:       "mark-done <id>",
+				callback:    commandMarkDone,
 			},
 		},
 	}, nil

@@ -38,7 +38,7 @@ func commandUpdate(state *state, args []string) error {
 			state.Tasks[i].UpdatedAt = time.Now()
 			updated = true
 			break
-		} 
+		}
 	}
 
 	if !updated {

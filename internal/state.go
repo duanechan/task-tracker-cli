@@ -74,7 +74,6 @@ func readState() (*state, error) {
 	return nil, err
 }
 
-
 // Writes the given application state to the JSON file.
 func saveState(state *state) error {
 	path := filepath.Join(cwd, filename)
@@ -98,7 +97,7 @@ func (s state) displayTasks(pred func(t Task) bool) {
 			idx++
 		}
 	}
-	
+
 	if sb.String() == "" {
 		sb.WriteString("No tasks to display.")
 	}

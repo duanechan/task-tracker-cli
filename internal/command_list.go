@@ -20,7 +20,7 @@ func commandList(state *state, args []string) error {
 	}
 
 	validArgs := []string{"todo", "in-progress", "done"}
-	
+
 	status := strings.ToLower(strings.TrimSpace(args[0]))
 	if status == "" {
 		return ErrEmptyArgs
@@ -31,7 +31,7 @@ func commandList(state *state, args []string) error {
 	}
 
 	fmt.Println("List of", status, "tasks:")
-	
+
 	switch status {
 	case "todo":
 		state.displayTasks(func(t Task) bool {

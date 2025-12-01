@@ -38,12 +38,12 @@ func commandMarkDone(state *state, args []string) error {
 			state.Tasks[i].UpdatedAt = time.Now()
 			marked = true
 			break
-		} 
+		}
 	}
 
 	if !marked {
 		return ErrTaskNotFound
 	}
-	
+
 	return saveState(state)
 }
