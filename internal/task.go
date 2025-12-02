@@ -24,4 +24,3 @@ type Task struct {
 func (t Task) String() string {
 	return fmt.Sprintf("(ID: %d) %s", t.ID, t.Description)
 }
-

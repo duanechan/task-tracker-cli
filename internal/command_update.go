@@ -42,7 +42,7 @@ func commandUpdate(c *CLI, args []string) error {
 	}
 
 	if !updated {
-		return ErrTaskNotFound  
+		return ErrTaskNotFound
 	}
 
 	return saveState(c.state)

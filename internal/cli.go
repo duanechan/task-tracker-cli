@@ -11,6 +11,7 @@ type command struct {
 	name        string
 	description string
 	usage       string
+	params      map[string]string
 	callback    func(*CLI, []string) error
 }
 
@@ -22,6 +23,7 @@ func initializeCommands() *commands {
 			name:        "add",
 			description: "Adds a task to the list.",
 			usage:       "add <description>",
+			params:      map[string]string{},
 			callback:    commandAdd,
 		},
 		"update": {
@@ -55,16 +57,16 @@ func initializeCommands() *commands {
 			callback:    commandMarkDone,
 		},
 		"help": {
-			name: "help",
+			name:        "help",
 			description: "Display list of commands",
-			usage: "help [command]",
-			callback: commandHelp,
+			usage:       "help [command]",
+			callback:    commandHelp,
 		},
 		"version": {
-			name: "version",
+			name:        "version",
 			description: "Check Task Tracker version",
-			usage: "version",
-			callback: commandVersion,
+			usage:       "version",
+			callback:    commandVersion,
 		},
 	}
 }
@@ -91,8 +93,8 @@ func LoadCLI() (*CLI, error) {
 	}
 
 	return &CLI{
-		version: "v1.0.0",
-		state: state,
+		version:  "v1.0.0",
+		state:    state,
 		commands: *initializeCommands(),
 	}, nil
 }
@@ -144,5 +146,3 @@ func (c *CLI) DisplayCommands() {
 	fmt.Println()
 	fmt.Println("See 'task-cli help <command>' for more information on a specific command.")
 }
-
-

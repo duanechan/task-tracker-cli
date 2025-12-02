@@ -16,7 +16,7 @@ func TestCommandUpdate(t *testing.T) {
 
 	mockCLI := func() *CLI {
 		return &CLI{
-			state:&state{
+			state: &state{
 				NextID: 3,
 				Tasks: []Task{
 					{ID: 1, Description: "Task 1", Status: Todo},

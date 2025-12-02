@@ -27,7 +27,7 @@ func commandAdd(c *CLI, args []string) error {
 		Status:      Todo,
 		CreatedAt:   time.Now(),
 		UpdatedAt:   time.Now(),
-	}                
+	}
 	c.state.Tasks = append(c.state.Tasks, task)
 
 	fmt.Printf("Task added successfully: %s\n", task)
