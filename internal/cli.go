@@ -60,6 +60,12 @@ func initializeCommands() *commands {
 			usage: "help [command]",
 			callback: commandHelp,
 		},
+		"version": {
+			name: "version",
+			description: "Check Task Tracker version",
+			usage: "version",
+			callback: commandVersion,
+		},
 	}
 }
 
