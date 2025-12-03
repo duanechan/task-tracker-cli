@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	task "github.com/duanechan/task-tracker-cli/internal"
+	task "github.com/duanechan/task-tracker/internal"
 )
 
 func main() {

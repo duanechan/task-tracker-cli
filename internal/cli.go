@@ -119,7 +119,7 @@ func LoadCLI() (*CLI, error) {
 	}
 
 	return &CLI{
-		version:  "v1.0.0",
+		version:  "v1.0.1",
 		state:    state,
 		commands: *initializeCommands(),
 	}, nil
